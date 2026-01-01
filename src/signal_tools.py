@@ -4,18 +4,15 @@ Basit sinyal işleme fonksiyonları
 """
 
 def moving_average(x, window_size):
-    """
-    Hareketli ortalama filtresi
+    y = []
 
-    Parametreler:
-        x           : sinyal vektörü
-        window_size : pencere uzunluğu (int)
+    for i in range(len(x)):
+        start = i - window_size + 1
+        if start < 0:
+            start = 0
 
-    Dönen:
-        y : filtrelenmiş sinyal
-    """
-    # TODO:
-    # 1. her örnek için pencereyi belirle
-    # 2. pencere içindeki ortalamayı hesapla
-    # 3. sonucu yeni bir listeye yaz
-    pass
+        window = x[start:i+1]
+        avg = sum(window) / len(window)
+        y.append(avg)
+
+    return y
